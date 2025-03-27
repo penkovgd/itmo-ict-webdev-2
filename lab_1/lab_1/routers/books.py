@@ -55,7 +55,7 @@ def create_books(book: BookCreate, session: Session = Depends(get_session)):
             raise HTTPException(
                 status_code=404, detail=f"Genre with id '{genre_id}' not found"
             )
-        db_book.genres.routerend(genre)
+        db_book.genres.append(genre)
     session.add(db_book)
     session.commit()
     session.refresh(db_book)
